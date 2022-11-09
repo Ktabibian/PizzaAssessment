@@ -1,8 +1,12 @@
 package com.pizza.pizzaorder.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"id"})
 public class Customer {
 
     @Id

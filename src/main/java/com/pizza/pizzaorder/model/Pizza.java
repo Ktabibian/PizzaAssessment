@@ -1,13 +1,17 @@
 package com.pizza.pizzaorder.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-public class Order {
-
+@JsonIgnoreProperties({"id"})
+public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     private String crust;
@@ -17,10 +21,8 @@ public class Order {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "CUSTOMER_ID")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
-
-    public Order(){}
 
     public Long getId() {
         return id;
